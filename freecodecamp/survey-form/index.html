@@ -7,8 +7,135 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<title>Document</title>
+		<link
+			rel="stylesheet"
+			href="style.css"
+		/>
 	</head>
 	<body>
-		<h1 id="title">freeCodeCamp Survey Form</h1>
+		<h1 id="title">Wasselni Survey Form</h1>
+		<p id="description">
+			Thank you for taking the time to help us improve the platform
+		</p>
+		<form id="survey-form">
+			<fieldset id="info-fieldset">
+				<label
+					for="name"
+					id="name-label"
+					>Name</label
+				>
+				<input
+					type="text"
+					id="name"
+					required
+					placeholder="Enter your name"
+				/>
+				<label
+					for="email"
+					id="email-label"
+					>Email</label
+				>
+				<input
+					type="email"
+					id="email"
+					placeholder="Enter your Email"
+					required
+					pattern="[\w\.]{6,16}@(gmail|yahoo|icloud|outlook|hotmail)\.com"
+				/>
+				<label
+					for="age"
+					id="number-label"
+					>Age (optional)</label
+				>
+				<input
+					type="number"
+					id="age"
+					min="13"
+					max="120"
+					placeholder="Age"
+				/>
+			</fieldset>
+			<fieldset id="role-select">
+				<select id="dropdown">
+					<option value="">--You use this app mainly as a...--</option>
+					<option value="driver">Driver</option>
+					<option value="commuter">Commuter</option>
+				</select>
+			</fieldset>
+			<fieldset id="area-select">
+				<legend>Check the areas where you usually travel:</legend>
+				<label for="area-beirut">Beirut</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-beirut"
+				/>
+				<label for="area-mtlebanon">Mount Lebanon</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-mtlebanon"
+				/>
+				<label for="area-north">North</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-north"
+				/>
+				<label for="area-south">South</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-south"
+				/>
+				<label for="area-zahle">Bekaa (Zahle)</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-zahle"
+				/>
+				<label for="area-baalbeck">Baalbeck-Hermel</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-baalbeck"
+				/>
+				<label for="area-akkar">Akkar</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-akkar"
+				/>
+				<label for="area-nabatiye">Nabatiye</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-nabatiye"
+				/>
+				/>
+				<label for="area-keserwan">Keserwan-Jbeil</label>
+				<input
+					type="checkbox"
+					name=""
+					id="area-keserwan"
+				/>
+			</fieldset>
+			<fieldset>
+				<label for="additional-comments"
+					>Do you have any Additional Comments?</label
+				>
+				<textarea
+					name=""
+					id="additional-comments"
+					cols="30"
+					rows="10"
+					placeholder="Additional Comments"
+				></textarea>
+			</fieldset>
+			<button
+				type="submit"
+				id="submit"
+			></button>
+		</form>
 	</body>
 </html>
