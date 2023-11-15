@@ -43,13 +43,13 @@
 					pattern="[\w\.]{6,16}@(gmail|yahoo|icloud|outlook|hotmail)\.com"
 				/>
 				<label
-					for="age"
+					for="number"
 					id="number-label"
 					>Age (optional)</label
 				>
 				<input
 					type="number"
-					id="age"
+					id="number"
 					min="13"
 					max="120"
 					placeholder="Age"
@@ -69,48 +69,56 @@
 					type="checkbox"
 					name=""
 					id="area-beirut"
+					value="beirut"
 				/>
 				<label for="area-mtlebanon">Mount Lebanon</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-mtlebanon"
+					value="mtlebanon"
 				/>
 				<label for="area-north">North</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-north"
+					value="north"
 				/>
 				<label for="area-south">South</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-south"
+					value="south"
 				/>
 				<label for="area-zahle">Bekaa (Zahle)</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-zahle"
+					value="zahle"
 				/>
 				<label for="area-baalbeck">Baalbeck-Hermel</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-baalbeck"
+					value="baalbeck"
 				/>
 				<label for="area-akkar">Akkar</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-akkar"
+					value="akkar"
 				/>
 				<label for="area-nabatiye">Nabatiye</label>
 				<input
 					type="checkbox"
 					name=""
 					id="area-nabatiye"
+					value="nabatiye"
 				/>
 				/>
 				<label for="area-keserwan">Keserwan-Jbeil</label>
@@ -118,12 +126,40 @@
 					type="checkbox"
 					name=""
 					id="area-keserwan"
+					value="keserwan"
 				/>
 			</fieldset>
+			<fieldset id="recommend-radio">
+				<legend>Would you recommend our app to others?</legend>
+				
+				<input
+					type="radio"
+					name="recommend"
+					id="recommend-yes"
+					value="yes"
+				/>
+				<label for="recommend-yes">Yes</label>
+				
+				<input
+					type="radio"
+					name="recommend"
+					value="maybe"
+					id="recommend-maybe"
+					checked
+				/>
+				<label for="recommend-maybe">Maybe</label>
+				
+				<input
+					type="radio"
+					id="recommend-no"
+					name="recommend"
+					value="recommend-no"
+				/>
+				<label for="recommend-no">No</label>
+				
+			</fieldset>
 			<fieldset>
-				<label for="additional-comments"
-					>Do you have any Additional Comments?</label
-				>
+				<legend>Do you have any additional comments?</legend>
 				<textarea
 					name=""
 					id="additional-comments"
@@ -131,6 +167,7 @@
 					rows="10"
 					placeholder="Additional Comments"
 				></textarea>
+			</fieldset>
 			</fieldset>
 			<button
 				type="submit"
