@@ -1,14 +1,10 @@
-let tableRows = [
-	{ subject: "Math", grade: 90 },
-	{ subject: "Physics", grade: 80 },
-	{ subject: "Arabic", grade: 70 },
-	{ subject: "French", grade: 60 },
-];
+let grades = [];
 
 //generate row template
 const tableRowTemplate = (subject, grade) => {
 	if (!(subject && grade)) {
-		alert("enter some values");
+		alert("Please Enter some Values");
+		return;
 	}
 	return `
     <tr>
@@ -24,24 +20,24 @@ const tableRowTemplate = (subject, grade) => {
   `;
 };
 
-const addBtn = document.getElementById("theBigFatButton");
+const gradeTable = document.getElementById("gradeTableBody");
+
+const addBtn = document.getElementById("subjectAddButton");
 addBtn.addEventListener("click", () => {
 	const subject = document.getElementById("subjectName").value;
 	const grade = document.getElementById("subjectGrade").value;
-	alert(`Subject is ${subject} and Grade is ${grade}`);
+	gradeTable.innerHTML += tableRowTemplate(subject, grade);
+	grades.push(grade);
 });
 
-//must haves
-//event listener for the add button
-// const addGrade = () => {
-//   subject =
-// 	document.getElementById("gradeTableBody").innerHTML += tableRowTemplate(
-// 		subject,
-// 		grade
-// 	);
-// };
-
 //event listener for the submit button
+const submitBtn = document.getElementById("submitBtn");
+submitBtn.addEventListener("click", () => {
+	const average = grades.reduce((acc, val) => acc + val, 0) / grades.length;
+	if (isNaN(average)) {
+		alert("You need to enter some grades first");
+	}
+});
 
 //good to haves
 //event listener for the delete button on each row

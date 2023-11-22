@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Calculator</title>
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
@@ -29,7 +28,7 @@
           <div class="form-group border-primary col-md-6">
             <label for="studentName" class="col-form-label">Student Name</label>
             <input type="text" name="studentName" id="studentNameInput" placeholder="Student Full Name" required>
-            <button class="btn btn-success" type="submit" disabled>Submit</button>
+            <button id="submitBtn" class="btn btn-success" type="button">Calculate Average</button>
           </div>
         </div>
         <div class="form-row">
@@ -38,8 +37,7 @@
             <input type="text" name="subjectName" id="subjectName" placeholder="subject">
             <label for="subjectGrade" class="col-form-label">Grade</label>
             <input type="number" name="subjectGrade" id="subjectGrade" min=0 max=100>
-            <!-- <input type="button" id="subjectAddBtn" class="btn btn-primary" value="Add"> -->
-            <button id="theBigFatButton" type="button" class="btn btn-primary">Add</button>
+            <button id="subjectAddButton" type="button" class="btn btn-primary">Add</button>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -60,5 +58,7 @@
       </form>
     </div>
   </body>
+
+  <script src="./script.js"></script>
 
 </html>
