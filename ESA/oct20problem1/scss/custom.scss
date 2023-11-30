@@ -1,0 +1,15 @@
+@import "functions";
+@import "variables";
+
+$primary: #b5c2b7;
+$secondary: #45364b;
+$theme-colors: map-merge(
+	$theme-colors,
+	(
+		"primary": $primary,
+		"secondary": $secondary,
+	)
+);
+
+// set changes
+@import "bootstrap";
