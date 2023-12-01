@@ -29,7 +29,7 @@
 	<body>
 		<div class="container bg-body-secondary">
 			<div class="row m-5">
-				<div class="input-group justify-content-around gap-5">
+				<div class="input-group justify-content-around gap-5 m-3">
 					<div class="form-control">
 						<input
 							type="text"
@@ -41,9 +41,11 @@
 							<input
 								class="form-check-input"
 								type="radio"
-								name="inlineRadioOptions"
+								name="typeRadio"
 								id="fruitsRadio"
-								value="fruits" />
+								value="fruit"
+								checked
+								onclick="toggleAddItemType(this.value)" />
 							<label
 								class="form-check-label"
 								for="inlineRadio1"
@@ -54,9 +56,10 @@
 							<input
 								class="form-check-input"
 								type="radio"
-								name="inlineRadioOptions"
+								name="typeRadio"
 								id="legumesRadio"
-								value="legumes" />
+								value="legume"
+								onclick="toggleAddItemType(this.value)" />
 							<label
 								class="form-check-label"
 								for="inlineRadio2"
@@ -66,12 +69,14 @@
 					</div>
 					<button
 						type="button"
-						class="btn btn-info">
+						class="btn btn-info"
+						id="addSpecificBtn">
 						Add to Specific List
 					</button>
 					<button
 						type="button"
-						class="btn btn-danger">
+						class="btn btn-danger"
+						id="addGeneralBtn">
 						Add to General List
 					</button>
 				</div>
@@ -79,22 +84,27 @@
 			<div class="container bg-primary mt-5">
 				<div class="row">
 					<div class="input-group gx-3 align-items-center">
-						<button
-							type="button"
-							class="btn btn-check border-1 border-black m-2">
-							Search for Item
-						</button>
-						<button
-							type="button"
-							class="btn btn-danger border-1 border-black m-2">
-							Delete an Item
-						</button>
+						<div class="col-auto">
+							<button
+								type="button"
+								class="btn btn-check border-1 border-black m-2">
+								Search for Item
+							</button>
+							<button
+								type="button"
+								class="btn btn-danger border-1 border-black m-2">
+								Delete an Item
+							</button>
+						</div>
 
-						<input
-							type="text"
-							name=""
-							id="searchBar"
-							placeholder="Search for Fruits or Legumes" />
+						<div class="col-auto">
+							<input
+								type="text"
+								name=""
+								id="searchBar"
+								placeholder="Search for Fruits or Legumes"
+								class="form-control" />
+						</div>
 					</div>
 				</div>
 				<hr />
@@ -104,10 +114,12 @@
 						<ul
 							class="list-group bg-success p-3"
 							id="fruitsList">
-							<li class="list-group-item bg-info px-3 border-0 rounded-3 mb-2">
+							<li
+								class="list-group-item bg-info px-3 border-0 rounded-3 mb-2 fruits-item">
 								Fruits! - Apple
 							</li>
-							<li class="list-group-item bg-info px-3 border-0 rounded-3 mb-2">
+							<li
+								class="list-group-item bg-info px-3 border-0 rounded-3 mb-2 fruits-item">
 								Fruits! - Mangoes
 							</li>
 						</ul>
@@ -118,20 +130,20 @@
 							class="list-group bg-success p-3"
 							id="combinedList">
 							<li
-								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2">
+								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2 fruits-item">
 								Fruits! - Pineapples
 							</li>
 							<li
-								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2">
+								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2 fruits-item">
 								Fruits! - Bananas
 							</li>
 							<li
-								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2">
-								Fruits! - Potato
+								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2 legumes-item">
+								Legumes! - Potato
 							</li>
 							<li
-								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2">
-								Fruits! - Lentils
+								class="list-group-item bg-primary px-3 border-0 rounded-3 mb-2 legumes-item">
+								Legumes! - Lentils
 							</li>
 						</ul>
 					</div>
