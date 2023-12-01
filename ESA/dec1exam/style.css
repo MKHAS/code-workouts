@@ -1,1 +1,11 @@
+#fruitsList li {
+	background-color: #0dcaf0;
+}
 
+#combinedList li {
+	background-color: #0d6efd;
+}
+
+#legumesList li {
+	background-color: #ffc107;
+}
