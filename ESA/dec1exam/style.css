@@ -9,3 +9,7 @@
 #legumesList li {
 	background-color: #ffc107;
 }
+
+li.li-selected {
+	background-color: red !important;
+}

@@ -26,6 +26,11 @@ addGeneralBtn.addEventListener("click", () => {
 		return;
 	}
 	combinedList.innerHTML += getItemTemplate(name, itemAddType);
+	combinedList.lastChild.addEventListener("click", () => {
+		item.classList.contains("li-selected")
+			? item.classList.remove("li-selected")
+			: item.classList.add("li-selected");
+	});
 });
 
 //Add event Listener on Specific Button
@@ -42,9 +47,34 @@ addSpecificBtn.addEventListener("click", () => {
 });
 
 //highlight selected
+
 const listEntries = document.querySelectorAll("li");
 listEntries.forEach((item) => {
 	item.addEventListener("click", () => {
-		item.style.backgroundColor = "#dc3545";
+		item.classList.contains("li-selected")
+			? item.classList.remove("li-selected")
+			: item.classList.add("li-selected");
 	});
 });
+
+//search for an item
+const searchItem = () => {
+	const queryString = document.getElementById("searchBar").value.toLowerCase();
+	if (!queryString) {
+		alert("Please enter a value");
+		return;
+	}
+	document.querySelectorAll("li").forEach((item) => {
+		if (item.innerHTML.toLowerCase().includes(queryString)) {
+			item.classList.add("li-selected");
+		}
+	});
+};
+
+//delete items
+const deleteItems = () => {
+	searchItem();
+	document.querySelectorAll("li.li-selected").forEach((item) => {
+		item.remove();
+	});
+};

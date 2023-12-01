@@ -29,7 +29,7 @@
 	<body>
 		<div class="container bg-body-secondary">
 			<div class="row m-5 border-1 rounded">
-				<div class="input-group justify-content-around gap-5 m-3">
+				<div class="input-group justify-content-around rounded gap-5 m-3">
 					<div class="form-control">
 						<input
 							type="text"
@@ -69,13 +69,13 @@
 					</div>
 					<button
 						type="button"
-						class="btn btn-info"
+						class="btn btn-info rounded"
 						id="addSpecificBtn">
 						Add to Specific List
 					</button>
 					<button
 						type="button"
-						class="btn btn-danger"
+						class="btn btn-danger rounded"
 						id="addGeneralBtn">
 						Add to General List
 					</button>
@@ -87,16 +87,17 @@
 						<div class="col-auto">
 							<button
 								type="button"
-								class="btn btn-check border-1 border-black m-2">
+								class="btn btn-info border-1 border-black m-2"
+								onclick="searchItem()">
 								Search for Item
 							</button>
 							<button
 								type="button"
-								class="btn btn-danger border-1 border-black m-2">
+								class="btn btn-danger border-1 border-black m-2"
+								onclick="deleteItems()">
 								Delete an Item
 							</button>
 						</div>
-
 						<div class="col-auto">
 							<input
 								type="text"
@@ -108,7 +109,7 @@
 					</div>
 				</div>
 				<hr />
-				<div class="row gx-2 my-5">
+				<div class="row gx-2 my-5 border-3 border-danger">
 					<div class="col">
 						<span>List of Fruits</span>
 						<ul
