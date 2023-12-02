@@ -3,17 +3,25 @@ let getItemTemplate = (name, type) => {
 	let pre = type == "fruit" ? "Fruits" : "Legumes";
 
 	return `				
-  			<li class="list-group-item px-3 border-0 rounded-3 mb-2 ${tag}">
+  			<li class="list-group-item p-3 bg-primary border-0 rounded-3 m-2 ${tag}">
 					${pre}! - ${name} 
 				</li>`;
 };
 
+document.querySelector("li").forEach((element) => {
+	element.addEventListener("transitionend", () => {
+		element.remove();
+	});
+});
+
+//this toggles whether the item added is a fruit or legume when the appropriate radio is clicked
 let itemAddType = "fruit";
 
 const toggleAddItemType = (value) => {
 	itemAddType = value;
 };
 
+//
 let addGeneralBtn = document.getElementById("addGeneralBtn");
 let combinedList = document.getElementById("combinedList");
 let addSpecificBtn = document.getElementById("addSpecificBtn");
@@ -75,6 +83,6 @@ const searchItem = () => {
 const deleteItems = () => {
 	searchItem();
 	document.querySelectorAll("li.li-selected").forEach((item) => {
-		item.remove();
+		item.classList.add("removed");
 	});
 };

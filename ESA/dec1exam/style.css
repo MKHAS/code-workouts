@@ -13,3 +13,43 @@
 li.li-selected {
 	background-color: red !important;
 }
+
+li {
+	transition: opacity 1s;
+}
+
+.removed {
+	opacity: 0;
+}
+
+.col span {
+	color: white;
+	text-shadow: 0 3px 10px black;
+}
+
+hr {
+	height: 5px;
+	border-top: none;
+	border: navy 2px;
+	color: black;
+	box-shadow: 0 4px 4px black;
+}
+
+.container {
+	box-shadow: 6px 6px 5px grey;
+}
+
+.control-bar {
+	box-shadow: none;
+}
+ul {
+	border: 1px solid white;
+	box-shadow: 4px 4px 10px black;
+}
+
+button:hover,
+ul:hover,
+li:hover,
+input:hover {
+	transform: scale(1.05);
+}
