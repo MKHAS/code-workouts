@@ -1,14 +1,35 @@
+//generate li template, type specifies whether it's a legume or fruit
 let getItemTemplate = (name, type) => {
-	let tag = type == "fruit" ? "fruits-item" : "legumes-item";
+	// let tag = type == "fruit" ? "fruits-item" : "legumes-item";
 	let pre = type == "fruit" ? "Fruits" : "Legumes";
 
 	return `				
-  			<li class="list-group-item p-3 bg-primary border-0 rounded-3 m-2 ${tag}">
+  			<li class="list-group-item p-3 border-0 rounded-3 m-2">
 					${pre}! - ${name} 
 				</li>`;
 };
 
-document.querySelector("li").forEach((element) => {
+//generate an li child based on the createElement API
+let generateListItem = (name, type) => {
+	let pre = type == "fruit" ? "Fruits" : "Legumes";
+	const newItem = document.createElement("li");
+	const content = document.createTextNode(`${pre}! - ${name}`);
+	newItem.appendChild(content);
+	newItem.classList.add(
+		"list-group-item",
+		"p-3",
+		"border-0",
+		"rounded-3",
+		"m-2"
+	);
+	newItem.addEventListener("transitionend", () => {
+		newItem.remove();
+	});
+	return newItem;
+};
+
+//handle removal for existing list elements
+document.querySelectorAll("li").forEach((element) => {
 	element.addEventListener("transitionend", () => {
 		element.remove();
 	});
@@ -26,32 +47,27 @@ let addGeneralBtn = document.getElementById("addGeneralBtn");
 let combinedList = document.getElementById("combinedList");
 let addSpecificBtn = document.getElementById("addSpecificBtn");
 
-//Add event Listener on General Button
+//Handle adding an element to General list
 addGeneralBtn.addEventListener("click", () => {
 	let name = document.getElementById("inputBar").value;
 	if (!name) {
 		alert("Please Enter a name");
 		return;
 	}
-	combinedList.innerHTML += getItemTemplate(name, itemAddType);
-	combinedList.lastChild.addEventListener("click", () => {
-		item.classList.contains("li-selected")
-			? item.classList.remove("li-selected")
-			: item.classList.add("li-selected");
-	});
+
+	combinedList.appendChild(generateListItem(name, itemAddType));
 });
 
-//Add event Listener on Specific Button
+//handle adding an element to Specific lists
 addSpecificBtn.addEventListener("click", () => {
 	let name = document.getElementById("inputBar").value;
 	if (!name) {
 		alert("Please Enter a name");
 		return;
 	}
-	document.getElementById(`${itemAddType}sList`).innerHTML += getItemTemplate(
-		name,
-		itemAddType
-	);
+	let specList = document.getElementById(`${itemAddType}sList`);
+
+	specList.appendChild(generateListItem(name, itemAddType));
 });
 
 //highlight selected
