@@ -1,15 +1,4 @@
-//generate li template, type specifies whether it's a legume or fruit
-let getItemTemplate = (name, type) => {
-	// let tag = type == "fruit" ? "fruits-item" : "legumes-item";
-	let pre = type == "fruit" ? "Fruits" : "Legumes";
-
-	return `				
-  			<li class="list-group-item p-3 border-0 rounded-3 m-2">
-					${pre}! - ${name} 
-				</li>`;
-};
-
-//generate an li child based on the createElement API
+//generate an li node using the createElement interface
 let generateListItem = (name, type) => {
 	let pre = type == "fruit" ? "Fruits" : "Legumes";
 	const newItem = document.createElement("li");
@@ -29,13 +18,16 @@ let generateListItem = (name, type) => {
 };
 
 //handle removal for existing list elements
+//we create a transition where the opacity is reduced
+//then we actually remove the element at the end of the transition
 document.querySelectorAll("li").forEach((element) => {
 	element.addEventListener("transitionend", () => {
 		element.remove();
 	});
 });
 
-//this toggles whether the item added is a fruit or legume when the appropriate radio is clicked
+//this toggles whether the item added is a fruit or legume when
+// the appropriate radio is clicked
 let itemAddType = "fruit";
 
 const toggleAddItemType = (value) => {
@@ -65,6 +57,7 @@ addSpecificBtn.addEventListener("click", () => {
 		alert("Please Enter a name");
 		return;
 	}
+	//this is a bit of a hack, should be a switch statement outside the scope
 	let specList = document.getElementById(`${itemAddType}sList`);
 
 	specList.appendChild(generateListItem(name, itemAddType));

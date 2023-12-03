@@ -54,7 +54,3 @@ li:hover,
 input:hover {
 	transform: scale(1.05);
 }
-
-input:hover {
-	width: 500px;
-}
