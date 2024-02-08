@@ -5,6 +5,7 @@ const expressLayout = require("express-ejs-layouts");
 const app = express();
 const PORT = 5000 || process.env.PORT;
 
+// static is serving the public folder allowing us to use it from our ejs files
 app.use(express.static("public"));
 
 //Templating Engine
