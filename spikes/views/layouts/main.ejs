@@ -12,8 +12,11 @@
 
   <body>
     <div class="container">
-      <header></header>
-      <%- body %>
+      <%- include('../partials/header.ejs') %>
+      <main>
+        <%- body %>
+      </main>
+      <%- include('../partials/footer.ejs') %>
     </div>
   </body>
 
