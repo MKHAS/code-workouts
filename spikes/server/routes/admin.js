@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 
 /**
  * GET /
- * HOME
+ * Admin - Login Page
  */
 
 router.get("/admin", async (req, res) => {
