@@ -99,11 +99,19 @@ router.post("/search", async (req, res) => {
 		};
 
 		let searchTerm = req.body.searchTerm;
+		const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
 
-		console.log(searchTerm);
+		const data = await Post.find({
+			$or: [
+				{ title: { $regex: new RegExp(searchNoSpecialChar, "i") } },
+				{ body: { $regex: new RegExp(searchNoSpecialChar, "i") } },
+			],
+		});
 
-		// const data = await Post.find();
-		res.send(searchTerm);
+		res.render("search", {
+			data,
+			locals,
+		});
 	} catch (error) {
 		console.log(error);
 	}
@@ -117,20 +125,12 @@ router.get("/about", (req, res) => {
 // 	res.render("about");
 // });
 
-// Initial Test Data insertion
+// //Initial Test Data insertion
 // function insertPostData() {
 // 	Post.insertMany([
 // 		{
-// 			title: "Test 1: Inserting a blog post",
-// 			body: "I'm inserting some blog posts to make sure mongo works!",
-// 		},
-// 		{
-// 			title: "Test 2: Inserting another blog post",
-// 			body: "Still inserting",
-// 		},
-// 		{
-// 			title: "Test 3: Inserting one last blog post",
-// 			body: "That should be all of them",
+// 			title: "Test 4: Finding a Blog Post",
+// 			body: "I'm testing the search function by looking for a very special post",
 // 		},
 // 	]);
 // }
