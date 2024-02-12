@@ -43,8 +43,6 @@ router.get("/about", (req, res) => {
 	res.render("about");
 });
 
-module.exports = router;
-
 // Get Home Without Pagination
 // router.get("", async (req, res) => {
 // 	const locals = {
@@ -65,8 +63,10 @@ module.exports = router;
 // 	res.render("about");
 // });
 
-// GET /
-// Post : id
+/**
+ * GET /
+ * Post :id
+ */
 
 router.get("/post/:id", async (req, res) => {
 	try {
@@ -84,6 +84,33 @@ router.get("/post/:id", async (req, res) => {
 	} catch (error) {
 		console.log(error);
 	}
+});
+
+/**
+ * POST /
+ * Post - searchTerm
+ */
+
+router.post("/search", async (req, res) => {
+	try {
+		const locals = {
+			title: "Search",
+			description: "Simple Blog created with NodeJS, Express and MongoDB",
+		};
+
+		let searchTerm = req.body.searchTerm;
+
+		console.log(searchTerm);
+
+		// const data = await Post.find();
+		res.send(searchTerm);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.get("/about", (req, res) => {
+	res.render("about");
 });
 
 // router.get("/about", (req, res) => {
@@ -108,3 +135,5 @@ router.get("/post/:id", async (req, res) => {
 // 	]);
 // }
 // insertPostData();
+
+module.exports = router;
