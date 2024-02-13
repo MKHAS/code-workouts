@@ -5,6 +5,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const jwtSecret = process.env.JWT_SECRET;
 const adminLayout = "../views/layouts/admin";
 
 /**
@@ -31,12 +32,31 @@ router.get("/admin", async (req, res) => {
 router.post("/admin", async (req, res) => {
 	try {
 		const { username, password } = req.body;
-		console.log(req.body);
-		res.redirect("/admin");
+
+		const user = await User.findOne({ username });
+
+		if (!user) {
+			return res.status(401).json({ message: "Invalid Credentials" });
+		}
+
+		const isPasswordValid = await bcrypt.compare(password, user.password);
+
+		if (!isPasswordValid) {
+			return res.status(401).json({ message: "Invalid Credentials" });
+		}
+
+		const token = jwt.sign({ userID: user._id }, jwtSecret);
+		res.cookie("token", token, { httpOnly: true });
+		res.redirect("dashboard");
 	} catch (error) {
 		console.log(error);
 	}
 });
+
+/**
+ * GET /
+ * About
+ */
 
 router.get("/about", (req, res) => {
 	res.render("about");
@@ -64,10 +84,6 @@ router.post("/register", async (req, res) => {
 	} catch (error) {
 		console.log(error);
 	}
-});
-
-router.get("/about", (req, res) => {
-	res.render("about");
 });
 
 module.exports = router;
