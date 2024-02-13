@@ -47,7 +47,7 @@ router.post("/admin", async (req, res) => {
 
 		const token = jwt.sign({ userID: user._id }, jwtSecret);
 		res.cookie("token", token, { httpOnly: true });
-		res.redirect("dashboard");
+		res.redirect("/dashboard");
 	} catch (error) {
 		console.log(error);
 	}
@@ -84,6 +84,14 @@ router.post("/register", async (req, res) => {
 	} catch (error) {
 		console.log(error);
 	}
+});
+
+/**
+ * GET /
+ * Admin Dashboard
+ */
+router.get("/dashboard", async (req, res) => {
+	res.render("admin/dashboard");
 });
 
 module.exports = router;
