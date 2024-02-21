@@ -9,6 +9,26 @@ const jwtSecret = process.env.JWT_SECRET;
 const adminLayout = "../views/layouts/admin";
 
 /**
+ *
+ * Check Login
+ */
+const authMiddleware = (req, res, next) => {
+	const token = req.cookies.token;
+
+	if (!token) {
+		return res.status(401).json({ message: "Unauthorized" });
+	}
+
+	try {
+		const decoded = jwt.verify(token, jwtSecret);
+		req.userId = decoded.userId;
+		next();
+	} catch (err) {
+		return res.status(401).json({ message: "Unauthorized" });
+	}
+};
+
+/**
  * GET /
  * Admin - Login Page
  */
@@ -90,8 +110,16 @@ router.post("/register", async (req, res) => {
  * GET /
  * Admin Dashboard
  */
-router.get("/dashboard", async (req, res) => {
-	res.render("admin/dashboard");
+router.get("/dashboard", authMiddleware, async (req, res) => {
+	try {
+		const locals = {
+			title: "Dashboard",
+			description: "Admin Dashboard",
+		};
+
+		const data = await Post.find();
+		res.render("admin/dashboard", { locals, data });
+	} catch (error) {}
 });
 
 module.exports = router;
