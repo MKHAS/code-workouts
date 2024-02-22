@@ -118,7 +118,23 @@ router.get("/dashboard", authMiddleware, async (req, res) => {
 		};
 
 		const data = await Post.find();
-		res.render("admin/dashboard", { locals, data });
+		res.render("admin/dashboard", { locals, data, layout: adminLayout });
+	} catch (error) {}
+});
+
+/**
+ * POST /
+ * Admin - Add new post
+ */
+
+router.get("/add-post", authMiddleware, async (req, res) => {
+	try {
+		const locals = {
+			title: "Add Post",
+			description: "Admin Dashboard",
+		};
+
+		res.render("admin/add-post", { locals, layout: adminLayout });
 	} catch (error) {}
 });
 
