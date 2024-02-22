@@ -1,6 +1,7 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const expressLayout = require("express-ejs-layouts");
+const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // Other middleware
 app.use(cookieParser());
+app.use(methodOverride("_method")); //lets us use HTML methods where we normally woulnd't be able to
 
 // Session settings
 app.use(
